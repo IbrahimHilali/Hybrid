@@ -38,6 +38,7 @@ class Customer(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=60)
+    description = models.CharField(max_length=255)
     date = models.DateTimeField('published')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     developers = models.ManyToManyField(Developer, verbose_name="Related Developers")
@@ -47,7 +48,11 @@ class Project(models.Model):
 
     def is_published_recently(self):
         now = timezone.now()
-        return now - datetime.timedelta(days=1) <= self.date <= now
+        return self.was_published_from() <= self.date <= now
+
+    @staticmethod
+    def was_published_from():
+        return timezone.now() - datetime.timedelta(days=1)
 
     is_published_recently.admin_order_field = 'date'
     is_published_recently.boolean = True
