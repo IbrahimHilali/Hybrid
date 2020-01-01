@@ -6,7 +6,7 @@ from django.utils import timezone
 
 
 class Developer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="Developer")
     company = models.CharField(max_length=40)
 
     def __str__(self):

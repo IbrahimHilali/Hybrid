@@ -10,6 +10,6 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Excludes any questions that aren't published yet.
+        Excludes any Project that aren't published yet.
         """
         return Project.objects.filter(date__lte=timezone.now())
