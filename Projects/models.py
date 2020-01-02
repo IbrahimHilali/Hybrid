@@ -38,7 +38,9 @@ class Customer(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=60)
-    description = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images')
+    description = models.TextField(max_length=255)
+    url = models.CharField(max_length=100)
     date = models.DateTimeField('published')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     developers = models.ManyToManyField(Developer, verbose_name="Related Developers")
@@ -49,6 +51,9 @@ class Project(models.Model):
     def is_published_recently(self):
         now = timezone.now()
         return self.was_published_from() <= self.date <= now
+
+    def inline_developers(self):
+        return " , ".join([developer.user.username for developer in self.developers.all()])
 
     @staticmethod
     def was_published_from():
