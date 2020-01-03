@@ -30,7 +30,7 @@ class DeveloperInline(admin.TabularInline):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['name', 'customer']}),
+        (None, {'fields': ['name', 'customer', 'image']}),
         ('more Information', {'fields': ['date'], 'classes': ['collapse']})
     ]
     inlines = [DeveloperInline]
