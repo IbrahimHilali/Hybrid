@@ -38,7 +38,7 @@ class Customer(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=60)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='projects')
     description = models.TextField(max_length=255)
     url = models.CharField(max_length=100)
     date = models.DateTimeField('published')
