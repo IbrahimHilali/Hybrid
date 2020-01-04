@@ -12,4 +12,9 @@ class IndexView(generic.ListView):
         """
         Excludes any Project that aren't published yet.
         """
-        return Project.objects.filter(date__lte=timezone.now())
+        return Project.objects.filter(date__lte=timezone.now()).order_by('date')
+
+
+class DetailsView(generic.DetailView):
+    model = Project
+    template_name = 'Projects/details.html'
