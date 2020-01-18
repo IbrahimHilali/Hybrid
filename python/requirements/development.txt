@@ -12,7 +12,7 @@ django==3.0.2
 #django-secure==1.0
 #django-cache-url==0.8.0
 #dj-database-url==0.3.0
-
+django-heroku==0.3.1
 # Forms
 #django-braces==1.4.0
 django-crispy-forms==1.8.1

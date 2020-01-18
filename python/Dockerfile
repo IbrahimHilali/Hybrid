@@ -5,3 +5,5 @@ WORKDIR /app
 COPY ./python/requirements/development.txt /app/
 RUN pip install --no-cache-dir -r development.txt
 COPY ./app/ /app/
+EXPOSE 8000
+CMD gunicorn Hybrid.wsgi:application --log-file -

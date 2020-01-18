@@ -1,0 +1,1 @@
+web: gunicorn Hybrid.wsgi:application --log-file
