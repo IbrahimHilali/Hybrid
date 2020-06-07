@@ -4,6 +4,7 @@
 #Marketplace
 #Explore
 #@IbrahimHilali
+.idea
 .env
 ./app/media/
 
